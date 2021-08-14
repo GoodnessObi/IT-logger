@@ -1,6 +1,7 @@
 import { Fragment, useEffect } from 'react';
 import './App.css';
-
+import { Provider } from 'react-redux';
+import store from './store';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import SearchBar from './components/layout/SearchBar';
@@ -17,17 +18,19 @@ const App = () => {
     M.AutoInit();
   })
   return (
-    <Fragment>
-      <SearchBar />
-      <div className="container">
-        <AddBtn />
-        <AddLogModal />
-        <EditLogModal />
-        <AddTechModal />
-        <TechListModal />
-        <Logs />
-      </div>
-    </Fragment>
+    <Provider store={store}>
+      <Fragment>
+        <SearchBar />
+        <div className="container">
+          <AddBtn />
+          <AddLogModal />
+          <EditLogModal />
+          <AddTechModal />
+          <TechListModal />
+          <Logs />
+        </div>
+      </Fragment>
+    </Provider>
   );
 }
 
